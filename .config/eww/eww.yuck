@@ -33,11 +33,7 @@
 (defwidget datetime []
    	(box 
 		:class "body"
-		:orientation "h"
-		:space-evenly "false"
-		:valign "center"
-		:halign "center"
-		:spacing 15
+		
 		(label
 			:class "time"
 			:text " ${time}"
@@ -48,11 +44,6 @@
 (defwidget stats []
 	( box
 		:class "body"
-		:orientation "h"
-		:space-evenly "false"
-		:valign "center"
-		:halign "center"
-		:spacing 15
 		
 		(label 
 			:class "vol"

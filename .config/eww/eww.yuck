@@ -1,0 +1,72 @@
+(defpoll time :interval "10s" "date '+%H:%M %b %d, %Y'")
+(defpoll cpu :interval "1s" `scripts/sys.sh --cpu`)
+(defpoll mem :interval "2s" `scripts/sys.sh --mem`)
+(defpoll vol  :interval "10s" `scripts/sys.sh --vol`)
+
+(defwindow bar
+  :monitor 0
+  :class mainWindow
+  :anchor center
+  :stacking "fg"
+  :windowtype "normal"
+  :wm-ignore true
+  :geometry (geometry 
+	:x "12px"
+	:y "12px"
+	:anchor "top right"
+  )
+  (widgets)
+)
+
+(defwidget widgets []
+	(box 
+		:class "widgets"
+		:orientation "h"
+		:space-evenly "false"
+		:spacing 12
+
+		(stats)
+		(datetime)
+	)
+)
+
+(defwidget datetime []
+   	(box 
+		:class "body"
+		:orientation "h"
+		:space-evenly "false"
+		:valign "center"
+		:halign "center"
+		:spacing 15
+		(label
+			:class "time"
+			:text " ${time}"
+		)
+	)
+)
+
+(defwidget stats []
+	( box
+		:class "body"
+		:orientation "h"
+		:space-evenly "false"
+		:valign "center"
+		:halign "center"
+		:spacing 15
+		
+		(label 
+			:class "vol"
+			:text "vol: ${vol}%"
+  		)
+
+		(label
+			:class "mem"
+			:text "mem: ${mem}%"
+		)
+
+		(label
+			:class "cpu"
+			:text "cpu: ${cpu}%"
+		)
+	)
+)

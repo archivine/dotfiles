@@ -23,7 +23,6 @@ socket() (
 					(button :onclick \"hyprctl dispatch workspace 7\" :class \"$(get_actv 7)\" \"7\") \
 					(button :onclick \"hyprctl dispatch workspace 8\" :class \"$(get_actv 8)\" \"8\") \
 					(button :onclick \"hyprctl dispatch workspace 9\" :class \"$(get_actv 9)\" \"9\") \
-					(button :onclick \"hyprctl dispatch workspace 0\" :class \"$(get_actv 0)\" \"0\") \
 		)"
 	fi
 )

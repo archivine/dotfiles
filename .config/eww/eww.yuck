@@ -1,39 +1,59 @@
-(defpoll time 	:interval "10s" 	`date '+%H:%M %b %d, %Y'`)
-(defpoll cpu 	:interval "1s" 		`scripts/sys.sh --cpu`)
-(defpoll mem 	:interval "2s" 		`scripts/sys.sh --mem`)
-(defpoll vol  	:interval "10s" 	`scripts/sys.sh --vol`)
+(defpoll time :interval "10s" 			"date '+%H:%M %b %d, %Y'")
+(defpoll cpu :interval "1s" 			"scripts/sys.sh --cpu")
+(defpoll mem :interval "2s" 			"scripts/sys.sh --mem")
+(defpoll vol  :interval "10s" 			"scripts/sys.sh --vol")
+
+(deflisten t_workspaces "scripts/workspaces.sh")
 
 (defwindow bar
   :monitor 0
   :class mainWindow
-  :anchor center
   :stacking "fg"
   :windowtype "normal"
   :wm-ignore true
   :geometry (geometry 
-	:x "12px"
-	:y "12px"
-	:anchor "top right"
+	:x "0px"
+	:y "10px"
+	:width "99%"
+	:anchor "top center"
+	
   )
   (widgets)
 )
 
 (defwidget widgets []
 	(box 
-		:class "widgets"
-		:orientation "h"
-		:space-evenly "false"
-		:spacing 12
 
-		(stats)
-		(datetime)
+		(box 
+			:class "l_widgets"
+			
+			:space-evenly "false"
+			:spacing 12
+			:halign "left"
+			
+
+			(workspaces)
+		)
+
+		(box 
+			:class "r_widgets"
+			:orientation "h"
+			:space-evenly "false"
+			:spacing 10
+			:halign "end"
+			:margin "12px"
+
+			(stats)
+			(datetime)
+		)
+		
 	)
 )
+
 
 (defwidget datetime []
    	(box 
 		:class "body"
-		
 		(label
 			:class "time"
 			:text " ${time}"
@@ -44,6 +64,9 @@
 (defwidget stats []
 	( box
 		:class "body"
+		:orientation "h"
+		:space-evenly "false"
+		:spacing 12
 		
 		(label 
 			:class "vol"
@@ -60,4 +83,8 @@
 			:text "cpu: ${cpu}%"
 		)
 	)
+)
+
+(defwidget workspaces []
+	(literal :content t_workspaces)
 )

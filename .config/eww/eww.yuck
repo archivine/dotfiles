@@ -16,7 +16,6 @@
 	:y "10px"
 	:width "99%"
 	:anchor "top center"
-	
   )
   (widgets)
 )

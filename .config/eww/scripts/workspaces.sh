@@ -1,4 +1,3 @@
-
 for i in $(hyprctl monitors | grep active | sed 's/()/(1)/g' | awk 'NR>1{print $1}' RS='(' FS=')'); do 
   	export active_workspace=$i
 done

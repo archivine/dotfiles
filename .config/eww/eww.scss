@@ -4,13 +4,17 @@
     font-weight: 600;
 }
 
-.widgets {
-    padding: 0;
-}
-
 .body {
     background: #1f2127;
     color: #c2c2c2;
     padding: 10px;
     border-radius: 5px;
+}
+
+.active {
+    color: #858585;
+}
+
+.inactive {
+    color: #c2c2c2;
 }

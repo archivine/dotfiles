@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 killall eww
 eww open bar
